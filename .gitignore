@@ -18,5 +18,6 @@ npm-debug.log
 *.log
 examples/dist/
 yarn-error.log
+package-lock.json
 test/unit/coverage
 .vscode
