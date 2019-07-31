@@ -1,0 +1,206 @@
+/*
+* @Author: 智
+* @Date:   2018-06-13 11:34:02
+* @Last Modified by:   智
+* @Last Modified time: 2018-06-14 09:09:16
+*/
+@charset "utf-8";
+
+@import './var';
+@mixin bgs($radius,$bg:green) {
+    border-radius: $radius;
+    background: $bg;
+};
+
+$blue:#1875e7;
+$red: pink;
+
+@mixin left {
+　　float: left;
+　　margin-left: 10px;
+};
+
+@mixin no-wrap{
+	text-overflow: ellipsis;
+  	overflow: hidden;
+  	white-space: nowrap;
+};
+
+@mixin flex{
+	display: flex;
+  justify-content: center;	
+};
+  
+@mixin bg-img($num){
+	background-image: url('~@/assets/img/#{$num}.jpg');
+	background-size: 1vw*100;
+	background-repeat: no-repeat;
+	background-clip:content-box;	
+};  // 背景图片
+
+  
+@mixin mask($color:"#e2e2e2c7",$zIndex: 20){
+	// padding: 0
+	z-index: $zIndex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: $color;
+};
+
+@mixin fa{
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	 text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+};
+@mixin animation ($name){
+	  -webkit-animation: $name 1s ease;	
+};
+
+@mixin title {
+	font-size: $title-size;
+  color: $title-color;
+};
+  
+@mixin desc{
+  font-size: $desc-size;
+  color: $desc-color ;
+
+};
+
+@mixin border-line ($px, $direction:all) {
+	@if ($direction == 'all') {
+		border: $px solid $border-color;
+	}
+	@else{
+	  border-#{$direction}: $px solid $border-color	
+	}
+};
+
+
+@mixin position($name) {
+	position: absolute;
+	left: 50%;
+	right: 50%;
+	translate: -50% 0; 
+	@if($name == 'vertical'){
+		top: 50%;
+	  transform: translateY(-50%);
+	}	
+};
+
+//new add 
+$bg:#246;
+$colors:blue;
+//@mixin 包含默认参数
+@mixin bor($cor:red){
+	border:1px solid $cor;
+};
+
+//@for
+$leg:10;
+@for $i from 1 through $leg {
+  .mg-#{$i*5}{
+    margin: 5px * $i !important;
+  }
+  .mglr-#{$i*5}{
+    margin-left: 5px * $i !important;
+    margin-right: 5px * $i !important;
+  }
+  .mgtb-#{$i*5}{
+    margin-top: 5px * $i !important;
+    margin-bottom: 5px * $i !important;
+  }
+  .mgt-#{$i*5}{
+    margin-top: 5px * $i !important;
+  }
+  .mgb-#{$i*5}{
+    margin-bottom: 5px * $i !important;
+  }
+  .mgl-#{$i*5}{
+    margin-left: 5px * $i !important;
+  }
+  .mgr-#{$i*5}{
+    margin-right: 5px * $i !important;
+  }
+  .pd-#{$i*5}{
+    padding: 5px * $i !important;
+  }
+  .pdtb-#{$i*5}{
+    padding-top: 5px * $i !important;
+    padding-bottom: 5px * $i !important;
+  }
+  .pdlr-#{$i*5}{
+    padding-left: 5px * $i !important;
+    padding-right: 5px * $i !important;
+  }
+  .pdt-#{$i*5}{
+    padding-top: 5px * $i !important;
+  }
+  .pdb-#{$i*5}{
+    padding-bottom: 5px * $i !important;
+  }
+  .pdl-#{$i*5}{
+    padding-left: 5px * $i !important;
+  }
+  .pdr-#{$i*5}{
+    padding-right: 5px * $i !important;
+  }
+};
+
+// @each 辅助颜色样式
+$primary:#dc2335;
+$info:#409eff;
+$success:#67c23a;
+$warning:#ff9900;
+$error:#f56c6c;
+$light:#f0f0f0;
+$gray:#888b91;
+$corList : (
+	'primary':$primary,
+	'info':$info,
+	'success':$success,
+	'warning':$warning,
+	'error':$error,
+	'light':$light,
+	'gray':$gray
+
+);
+
+@each $i, $colorChoice in $corList {
+	.text-#{$i}{
+		color:$colorChoice;
+	}
+	.bg-#{$i}{
+		background-color:$colorChoice;
+	}
+	.border-#{$i}{
+		border-color:$colorChoice;
+	}
+};
+
+// @if else
+
+@mixin bgColor ($cor){
+	@if($cor == 'primary'){
+		background: #dc2335;
+	}
+	@else if($cor == 'error'){
+		background: deepred;
+	}
+	@else{
+		background: deeppink;
+	}
+};
+
+// @function px转rem --->调用  font-size:pxToEm(20);  --->编译为  font-size: 1.25rem;
+@function pxToEm($px, $base: 100) { 
+	@return ($px / $base) * 1rem; 
+};
+  
+    

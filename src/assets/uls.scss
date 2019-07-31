@@ -1,0 +1,105 @@
+/*
+* @Author: 智
+* @Date:   2018-07-18 10:09:51
+* @Last Modified by:   智
+* @Last Modified time: 2018-07-18 11:11:27
+*/
+
+
+
+.titles{
+	clear:both;
+	margin:10px;
+	h3{
+		float:left;
+	}
+	.icontitle{
+		margin:0 10px;
+		display:inline-block;	
+	}
+}
+.uls{
+	ul{
+		clear:both;
+		li{
+			line-height:44px;
+			clear:both;
+
+		}
+		.isTime{
+			span{
+				float:left;
+				margin:0 10px;
+			}
+		}
+		.noTime{
+			span{
+				float:right;
+				margin:0 10px;
+			}
+		}
+	}
+}
+
+/*hint*/
+
+.hint{
+	clear:both;
+	.hint-bg{
+		.hint-title{
+			margin:10px 10px 0 10px;
+		}
+		.hint-list{
+			margin:0px 0 0 10px;
+			ul{
+				li{
+					line-height:24px;
+					p{
+						span{
+							.spe{
+								color:red;
+							}
+							.hel{
+								color:blue;
+							}
+						}
+					}
+					
+				}
+			}
+		}
+	}
+	.tip-more-container {
+	     text-align: center;
+	     .tip-more {
+	       position: relative;
+	       display: inline-block;
+	       width: 88px;
+	       height: 30px;
+	       line-height: 30px;
+	       color: #1094d0;
+	       border: 1px solid #e5e5e5;
+	       border-top: none;
+	       text-align: left;
+	       padding-left: 20px;
+	       cursor: pointer;
+	       &:after {
+	         content: "";
+	         border: 7px solid;
+	         border-color: #1094d0 #ffffff #ffffff #ffffff;
+	         position: absolute;
+	         top: 12px;
+	         right: 12px;
+	       }
+	     }
+	}
+}
+
+.nax{
+		display:flex;
+		height:20px;
+		p{
+			flex:1;
+			text-align:center;
+		}
+	}

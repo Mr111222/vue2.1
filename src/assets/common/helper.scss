@@ -1,0 +1,108 @@
+@import (reference) "variables";
+
+//颜色辅助样式
+each(#colors(), {
+  .text-${key} {
+    color: $value
+  }
+  .bg-@{key} {
+    background-color: @value
+  }
+  .border-@{key} {
+    border-color: @value
+  }
+});
+
+//外边距、内边距辅助样式
+.loopMarginAndPadding($counter) when ($counter >= 0){
+  .loopMarginAndPadding(($counter - 1));
+  $key: $counter * 5;
+  .mg-${key}{
+    margin: 5px * $counter !important;
+  }
+  .mglr-${key}{
+    margin-left: 5px * $counter !important;
+    margin-right: 5px * $counter !important;
+  }
+  .mgtb-${key}{
+    margin-top: 5px * $counter !important;
+    margin-bottom: 5px * $counter !important;
+  }
+  .mgt-${key}{
+    margin-top: 5px * $counter !important;
+  }
+  .mgb-${key}{
+    margin-bottom: 5px * $counter !important;
+  }
+  .mgl-${key}{
+    margin-left: 5px * $counter !important;
+  }
+  .mgr-${key}{
+    margin-right: 5px * $counter !important;
+  }
+  .pd-${key}{
+    padding: 5px * $counter !important;
+  }
+  .pdtb-${key}{
+    padding-top: 5px * $counter !important;
+    padding-bottom: 5px * $counter !important;
+  }
+  .pdlr-${key}{
+    padding-left: 5px * $counter !important;
+    padding-right: 5px * $counter !important;
+  }
+  .pdt-${key}{
+    padding-top: 5px * $counter !important;
+  }
+  .pdb-${key}{
+    padding-bottom: 5px * $counter !important;
+  }
+  .pdl-${key}{
+    padding-left: 5px * $counter !important;
+  }
+  .pdr-${key}{
+    padding-right: 5px * $counter !important;
+  }
+}
+
+.loopMarginAndPadding(10);
+
+//字体辅助样式
+.text-base{
+  font-size: $font-size-base !important;
+}
+.text-small{
+  font-size: $font-size-small !important;
+}
+.text-smaller{
+  font-size: $font-size-smaller !important;
+}
+.text-big{
+  font-size: $font-size-big !important;
+}
+.text-bigger{
+  font-size: $font-size-bigger !important;
+}
+.text-bold{
+  font-weight: bold !important;
+}
+
+.text-underline{
+  text-decoration: underline !important;
+}
+
+.text-delete{
+  text-decoration: line-through !important;
+}
+
+.text-left{
+  text-align: left !important;
+}
+
+.text-right{
+  text-align: right !important;
+}
+
+.text-center{
+  text-align: center !important;
+}

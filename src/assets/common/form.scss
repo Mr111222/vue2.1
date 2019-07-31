@@ -1,0 +1,12 @@
+.cb-field{
+  .cb-field-label{
+    min-width: 110px;
+    font-size: 1rem;
+  }
+  .cb-field-required-icon{
+    font-size: 0.8rem;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    color: #colors[error];
+  }
+}

@@ -1,0 +1,68 @@
+// 局部引入less
+@charset "utf-8";
+@bg:#ccc;
+@cor:#445;
+
+
+// 颜色变量  ---->调用   color:#colors[info]   ---->渲染  color:#409eff;
+#colors (){
+	primary:#dc2335;
+	info:#409eff;
+	success:#67c23a;
+	warning:#ff9900;
+	error:#f56c6c;
+	light:#f0f0f0;
+	gray:#888b91;
+};
+
+// each
+each(#colors(),{
+	.text-@{key}{ // @{key}===>  primary,info....
+		color:@value
+	}
+	.bg-@{key}{ 
+		background-color:@value
+	}
+	.border-@{key}{ 
+		border-color:@value
+	}
+});
+
+// when 循环
+ 
+@len:10;
+
+//外边距、内边距辅助样式
+.CommonMarginPadding(@total) when (@total >= 0){
+  .CommonMarginPadding((@total - 1));
+  @key: @total * 5;
+  .mg-@{key}{
+    margin: 5px * @total !important;
+  }
+  .pd-@{key}{
+    padding: 5px * @total !important;
+  }
+};
+
+.CommonMarginPadding(@len);
+
+
+// 指定class类  --->调用
+// 
+// .ps{
+// 		color:#color[info];
+// 		background:@bg;
+// 		.clearBoth();  直接调用
+// }
+// 
+// 
+// 
+// 
+
+.clearBoth(){
+	&:after{
+		content: '';
+		clear:both;
+		display:table;
+	}
+};

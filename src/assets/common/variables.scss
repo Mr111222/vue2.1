@@ -1,0 +1,55 @@
+
+
+//颜色变量
+@mixin colors (){
+  primary: #dc2335;
+  info: #409eff;
+  success: #67c23a;
+  warning: #ff9900;
+  error: #f56c6c;
+  light: #f0f0f0;
+  gray: #888b91;
+}
+
+
+//背景色
+$background-color-base: #f9f9f9;
+
+//边框色
+$border-color-base: #dddee1;
+$border-color-split: #dedfe1;
+
+//字体颜色
+$font-color-base: #333;
+$font-color-content: #495060;
+$font-color-subsidiary: #5f636c;
+$font-color-placeholder: #70747d;
+$font-color-title: #1c2438;
+
+//字体大小
+$font-size-root: 14px;
+$font-size-bigger: 1.25rem;
+$font-size-big: 1.1rem;
+$font-size-base: 1rem;
+$font-size-small: 0.9rem;
+$font-size-smaller: 0.75rem;
+
+//按钮
+$btn-size-base: 42px;
+$btn-size-small: 38px;
+$btn-size-large: 46px;
+
+// Z-index
+$zindex-subnavbar: 800;
+$zindex-bottombar: 800;
+$zindex-actionsheet: 900;
+$zindex-dialog: 1000;
+$zindex-toast: 1010;
+$zindex-message: 1010;
+$zindex-loading: 2000;
+$zindex-popup: 1011;
+
+// 导航栏高度
+$navbar-android-height: 50px;
+$navbar-ios-height: 44px;
+
