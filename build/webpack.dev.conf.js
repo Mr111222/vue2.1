@@ -11,13 +11,10 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const express = require('express')
 const bodyParser = require('body-parser')
-//------------------------------------开始----------------------------
+
 // 引用express
   const app = express()
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: false }))
-
-
+  const jsonParser = require('body-parser').json()
   const appData = require('../data.json')
   const goods = appData.goods
   const login = appData.login
@@ -54,16 +51,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       })
 
       //测试成功
-      apiRouter.post('/posts',function(req,res){
-        console.log(req.body, 'body')
-        // let {name,password} = req.body
-        // postData.forEach(function(list){
-        //   if(list.name === name){
-        //     res.json({
-        //       data:list
-        //     })
-        //   }
-        // })
+      apiRouter.post('/posts', jsonParser, function(req,res){
+        // console.log(req.body, 'body')
+        let {name,password} = req.body
+        postData.forEach(function(list){
+          if(list.name === name){
+            res.json({
+              data:list
+            })
+          }
+        })
       })
     },
     // end

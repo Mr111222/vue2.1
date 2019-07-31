@@ -198,7 +198,7 @@ export default {
      this.subObj = x
     },
     postFn () {
-      let data = {name: 'asdasdasd'} // 参数默认
+      let data = {name: 'admin', password: 'admin'} // 参数默认
       this.getPostDataFn(data)
     },
     getFn () {

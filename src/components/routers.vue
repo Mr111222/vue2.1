@@ -3,11 +3,12 @@
 		<detail-header title="router"></detail-header>
 		<div class="tabs">
 			<div class="uls">
-				<ul>
-					<li v-for="(i,index) in list" :key="index" @click="toRouterFn(i.name)">
-						{{i.name}}	
-					</li>
-				</ul>
+				<button @click="getFn">get请求</button>
+				<br>
+				<br>
+				<button @click="testFn">测试请求</button>
+				<br>	
+				<button @click="postFn">post请求</button>
 			</div>
 			<div class="view">
 					<router-view></router-view>	
@@ -35,6 +36,7 @@
 <script>
 	import DetailHeader from '../components/DetailHeader'
 	import Footer from '../components/commonFooter'
+	const baseUrl = 'http://localhost:3000'
 	export default {
 		data () {
 			return {
@@ -46,8 +48,27 @@
 			DetailHeader
 		},
 		methods: {
+			async testFn() {
+				let str = {"page": 10}
+				let data = await this.$http(`${baseUrl}/ceshi`,{params: str})
+				console.log(data.goods, 'data')
+			},
 			toRouterFn (x) {
 				this.$router.push({path:`/routers/${x}/`})
+			},
+			getFn () {
+				let str = {"name":"pps","age":20}
+				this.$http(`${baseUrl}/cors2`, {
+        params: str
+      }).then(res=>{
+					console.log(res, 'get')
+				})
+			},
+			postFn () {
+				let str = {"name":"pps","age":20}
+				this.$http.post(`${baseUrl}/cors1`, str).then(res=>{
+					console.log(res, 'post')
+				})
 			}
 		}
 	}
