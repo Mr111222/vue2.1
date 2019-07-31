@@ -1,3 +1,4 @@
+// 测试页面在routers路由页面下
 const path = require('path')
 const fs = require('fs')
 const koa = require('koa')
