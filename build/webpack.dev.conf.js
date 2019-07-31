@@ -14,7 +14,7 @@ const bodyParser = require('body-parser')
 
 // 引用express
   const app = express()
-  const jsonParser = require('body-parser').json()
+  const jsonParser = require('body-parser').json()  // 为获取post参数时使用
   const appData = require('../data.json')
   const goods = appData.goods
   const login = appData.login
