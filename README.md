@@ -1,3 +1,6 @@
+https://www.cnblogs.com/wanshutao/p/3750096.html 	// 正则表示的运用
+https://blog.csdn.net/qq_34645412/article/details/81170576 	// ES6 Promise用法小结
+
  js
 
 	1.闭包
@@ -42,7 +45,122 @@
 	this.update(to.parmas.id) // 调用方法更新id对应的组件更新
 	next()
 }
+7.websoket 简称ws
 
+	socket.io 兼容IE5，简单方便
+	const http = require('http')
+	const io = require('cocket.io')
+	// 建立普通连接
+	const server = http.createServer((req, res)=>{})
+	server.listen(8080)
+	// 建立ws  socket连接
+	const wsServer = io.listen(server) // 你创建的http链接
+	wsServer.on('connection', sock=>{
+		// 接收
+		sock.on('name', res=>{
+			console.log(res)
+		})
+		// 发送
+		setInterval(()=>{
+			sock.emit('timer', new Date().getTime()) // emit 发送数据，指定名称，数据资源
+		}, 1000)
+	})
+
+
+	// 接收socket数据  html页面接收
+
+	首先引入socket.io文件
+	<!DOCTYPE html>
+	<html>
+	  <head>
+	    <meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+	    <title>docs</title>
+	  </head>
+	  <body>
+	   
+	  </body>
+	  <script src="localhost:8080/socket.io/socket.io.js"></script>
+
+	  <script>
+			const sock = io.connect（'ws://localhost:8080/'）
+			sock.on('timer', res=>{
+				cosnole.log.log(res)
+			})
+			sock.emit('name', 'pps')
+	  </script>
+	</html>
+
+	8.原生webSocket
+		
+		request 请求头
+		Upgrade: webSocket  // 升级为webSocket协议
+		Sec-webSocket-Keys  //	检测是否支持webSocket
+		Sec-webSocket-Version //	版本号
+
+		// 后台
+		const http = require('http')
+		const net = rquire('net')    // 作用创建一个原始的协议
+		let server = net.createServer(sock=>{
+			console.log('有人链接')
+			// sock.once 执行一次
+
+			sock.once('data', buffer=>{
+				let str = buffer.toString()
+				let hearder = toParse(str)
+				if(hearder['upgrade'] != 'WebSocket'){
+					cosnole.log('no WebSocket')
+					sock.end()
+				}else if(hearder['version'] != '13'){
+					console.log('server is not 13')
+					sock.end()
+				}else{
+					let key = header['sec-websocket-key']
+					let uuid = '自己查' //258EAFA5
+					let hash =  crypto.createHash('sha1')
+					hash.update(key+uuid)
+					let keys = hash.digest('base64')
+					// 手写http头  自己查吧
+					sock.write(`HTTP/1.1 101 Switching Protocols\r\nUpgrade: websocket\r\n.......`)
+				}
+			})
+		})
+		
+		function toParse(str){
+			const arr = {}
+			let arrs = str.split('\r\n').filter(res=>res)
+			arrs.shift()
+			arrs.forEach(res=>{
+				let [name, value] = res.split(':')
+				name = name.replace(/^\s+|\s+$/g).toLowerCase()
+				value = name.replace(/^\s+|\s+$/g)
+				arr[name] = value
+			})
+			return arr
+		}
+
+
+
+		// 前台
+		<html>
+		  <head>
+		    <meta charset="utf-8">
+		    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+		    <title>docs</title>
+		  </head>
+		  <body>
+		   
+		  </body>
+
+		  <script>
+				const wsServer =  new WebSocket('localhost:8080')
+							wsServer.onopen
+							wsServer.onmessage
+							wsServer.onerror
+							wsServer.onclose
+		  </script>
+		</html>
+	
 koa 
 
 const Koa = require('koa')
