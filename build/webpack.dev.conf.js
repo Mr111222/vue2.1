@@ -21,6 +21,10 @@ const bodyParser = require('body-parser')
   const postData= appData.postData
   const apiRouter = express.Router()
 
+// 骨架屏
+
+const SkeletonWebpackPlugin = require('vue-skeleton-webpack-plugin')
+
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -106,7 +110,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         to: config.dev.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    // 骨架屏
+    new SkeletonWebpackPlugin({
+      webpackConfig: require('./webpack.skeleton.conf'),
+      quiet: true
+    })
   ]
 })
 

@@ -45,6 +45,7 @@ Vue.config.productionTip = isDebug_mode
 
 
 
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
