@@ -11,9 +11,11 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "element-ui": "^2.13.2",
     "vt-picker": "^1.0.2",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vue-simple-uploader": "^0.7.4",
     "xlsx": "^0.15.1"
   },
   "devDependencies": {
@@ -46,6 +48,7 @@
     "jade": "^1.11.0",
     "jquery": "^3.4.1",
     "koa": "^2.7.0",
+    "koa-body": "^4.2.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",

@@ -11,6 +11,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const express = require('express')
 const bodyParser = require('body-parser')
+// const multer  = require('multer');
 
 // 引用express
   const app = express()

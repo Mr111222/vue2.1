@@ -44,6 +44,16 @@ Vue.config.devtools = isDebug_mode
 Vue.config.productionTip = isDebug_mode
 
 
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+
+Vue.use(ElementUI);
+
+import uploader from 'vue-simple-uploader'
+
+Vue.use(uploader)
+
+
 
 
 /* eslint-disable no-new */
