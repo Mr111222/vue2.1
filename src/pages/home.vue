@@ -8,6 +8,10 @@
       </ul>
       <el-checkbox v-model="checked" @change="get">备选项</el-checkbox>
     </div>
+    <el-button @click="setQrcode">生成二维码</el-button> 
+    <div style="width: 300px; height:300px; border:1px solid #ccc; margin: 0 auto;">
+      <vue-qr   :logoSrc="src2" :text="text" :size="300"></vue-qr>
+    </div>
     <div>
       <!-- <el-upload
         class="upload-demo"
@@ -36,12 +40,19 @@
 </template>
 
 <script>
+import vueQr from 'vue-qr'
 import DetailHeader from '@/components/DetailHeader'
 import CommonFooter from '@/components/commonFooter'
 import List from '@/components/list'
 export default {
   data () {
       return {
+          src2: require('../../static/upload/monkey.jpg'),
+          text: 'https://blog.csdn.net/fifteen718/article/details/85850511',
+          downloadData: {
+                  url: '扫码访问的链接地址',
+                  icon: '随便一张图片的地址也行'
+          },
           checked: false,
           items: [],
           items1: [
@@ -64,10 +75,18 @@ export default {
   components: {
     DetailHeader,
     CommonFooter,
-    List
+    List,
+    vueQr
+  },
+  mounted () {
+    this.setQrcode()
   },
   methods: {
-   submitUpload() {
+    setQrcode () {
+      this.text = `www.${this.randomString()}.com`
+      console.log(this.text, 9090)
+    },
+    submitUpload() {
       this.$refs.upload.submit();
     },
     handleRemove(file, fileList) {
@@ -78,7 +97,17 @@ export default {
     },
     get (val) {
       console.log(val, 'xx')
-    }
+    },
+    randomString(len) {
+　　   len = len || 32;
+　　   var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678';    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/
+　　   var maxPos = $chars.length;
+　　   var pwd = '';
+    　　for (var i = 0; i < len; i++) {
+    　　　　pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+    　　}
+    　　return pwd;
+}
   },
   created () {
     this.$http.get('http://localhost:3000/datas').then((data) => {
