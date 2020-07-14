@@ -45,7 +45,6 @@ app.use(cors({
 const uploadUrl = "http://localhost:3000/static/upload";
 // 上传文件
 router.post('/upload', (ctx) => {
-  console.log(ctx, 9999)
   // 获取上传文件
   const file = ctx.request.files.file;
   console.log(file);
