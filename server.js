@@ -47,10 +47,8 @@ const uploadUrl = "http://localhost:3000/static/upload";
 router.post('/upload', (ctx) => {
   // 获取上传文件
   const file = ctx.request.files.file;
-  console.log(file);
   // 读取文件流
   const fileReader = fs.createReadStream(file.path);
-  console.log(fileReader);
   // 设置文件保存路径
   const filePath = path.join(__dirname, '/static/upload/');
   // 组装成绝对路径
@@ -111,7 +109,7 @@ app
     .use(router.allowedMethods())
  
 app.listen(3000, function(){
-	console.log(`server runing`)
+	console.log(`server runing   api -> http://localhost:3000/`)
 })
 
 
