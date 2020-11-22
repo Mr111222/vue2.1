@@ -10,7 +10,7 @@
     </div>
     <el-button @click="setQrcode">生成二维码</el-button> 
     <div style="width: 300px; height:300px; border:1px solid #ccc; margin: 0 auto;">
-      <vue-qr   :logoSrc="src2" :text="text" :size="300"></vue-qr>
+      <!-- <vue-qr   :logoSrc="src2" :text="text" :size="300"></vue-qr> -->
     </div>
     <div>
       <!-- <el-upload
@@ -23,7 +23,7 @@
         <el-button slot="trigger" size="small" type="primary">选取文件</el-button>
         <el-button style="margin-left: 10px;" size="small" type="success" @click="submitUpload">上传到服务器</el-button>
         <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-      </el-upload> -->
+      </el-upload> 
       <uploader :options="options" class="uploader-example">
           <uploader-unsupport></uploader-unsupport>
           <uploader-drop>
@@ -33,7 +33,7 @@
             <uploader-btn :directory="true">select folder</uploader-btn>
           </uploader-drop>
           <uploader-list></uploader-list>
-        </uploader>
+        </uploader>-->
     </div>
     <common-footer></common-footer>
   </div>
@@ -47,7 +47,7 @@ import List from '@/components/list'
 export default {
   data () {
       return {
-          src2: require('../../static/upload/monkey.jpg'),
+          // src2: require('../../static/upload/monkey.jpg'),
           text: 'https://blog.csdn.net/fifteen718/article/details/85850511',
           downloadData: {
                   url: '扫码访问的链接地址',

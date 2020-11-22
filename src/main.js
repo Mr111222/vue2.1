@@ -17,6 +17,9 @@ import Message from './message/index'
 Vue.use(Message)
 
 import Loading from './wincom/index'
+import BASE_URL from "../config/env";
+axios.baseUrl = BASE_URL
+console.log(BASE_URL, 999)
 Vue.prototype.$http = axios  //其他页面在使用axios的时候直接  this.$http就可以了
 // Vue.prototype.$message = Message
 Vue.use(iView)

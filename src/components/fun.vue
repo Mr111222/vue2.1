@@ -1,6 +1,7 @@
 <template>
 	<div class="fun">
 		<detail-header title="Fun">	</detail-header>
+		<p>{{version}}</p>
 		<div class="funBtn">
 			<p>我是fun</p>
 			<input v-model="pps"/>
@@ -15,8 +16,11 @@
 				<li style="background:#ccc;text-align:center" v-for="(item,index) in list" :key="item.age" >{{item.name}}</li>
 			</ul>
 		</div>
+		<div>
+			<el-button @click="getFN">get</el-button>
+		</div>
 		
-		<Footer/>
+		<!-- <Footer/> -->
 	</div>
 </template>
 <style type="text/css" media="screen">
@@ -56,6 +60,11 @@
 			Footer
 		},
 		methods:{
+			getFN (){
+				this.$http('/api/xxx').then(res=>{
+					console.log(res)
+				})
+			},
 			testDe () {
 				let num = Math.floor(Math.random()*100)
 				this.getVal(num)
@@ -94,7 +103,13 @@
 		},
 		mounted () {
 			console.log(this.$router.query)
-		}
+		},
+		computed: {
+	    version () {
+	      console.log(process.env, 999)
+	      return process.env.ENV_CONFIG
+	    }
+	  }
 		
 	}
 </script>

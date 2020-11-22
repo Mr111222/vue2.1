@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Detail from '@/pages/goodsDetail'
+import Upload from '@/pages/upload'
 // import Mds from '@/components/Md/index.md'
 Vue.use(VueRouter)
 //封装方法，直接传入路径，然后按需加载每个模块
@@ -149,6 +150,13 @@ const routes = [
     }
     // //子路由的组件为  --->  component:getComsChild('choice2') 不是components
     // children: [...childs] //子路由
+  },
+  {
+    path: '/upload',
+    component: Upload,
+    meta: {
+      title:'vue-simple-upload'
+    }
   },
   {
     path: '/detail/:id',
